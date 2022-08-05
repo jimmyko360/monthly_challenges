@@ -1,13 +1,27 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 
 # Create your views here.
 
+monthly_challenges = {
+    "january": "gym",
+    "february": "tan",
+    "march": "laundry",
+    "april": "gym",
+    "may": "tan",
+    "june": "laundry",
+    "july": "gym",
+    "august": "tan",
+    "september": "laundry",
+    "october": "gym",
+    "november": "tan",
+    "december": "laundry"
+}
 
-def index(request):
-    return HttpResponse("This works")
 
-
-def index_feb(request):
-    return HttpResponse("I am the shortest month")
+def challenge_by_month(request, month):
+    try:
+        monthly_challenges[month]
+        return HttpResponse(monthly_challenges[month])
+    except:
+        return HttpResponseNotFound("This page is located in a different castle.")
