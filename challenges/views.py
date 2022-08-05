@@ -7,3 +7,7 @@ from django.http import HttpResponse
 
 def index(request):
     return HttpResponse("This works")
+
+
+def index_feb(request):
+    return HttpResponse("I am the shortest month")
