@@ -31,7 +31,8 @@ def challenge_by_month_by_number(request, month_number):
 
 def challenge_by_month(request, month):
     try:
-        monthly_challenges[month]
-        return HttpResponse(monthly_challenges[month])
+        challenge = monthly_challenges[month]
+        challenge_text = f"<h1>{month}</h1><br><h3>{challenge}</h3>"
+        return HttpResponse(challenge_text)
     except:
-        return HttpResponseNotFound("This page is located in a different castle.")
+        return HttpResponseNotFound("<h1>This page is located in a different castle.</h1>")
