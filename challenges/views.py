@@ -20,8 +20,11 @@ monthly_challenges = {
 
 
 def challenge_by_month_by_number(request, month_number):
-    month_text = list(monthly_challenges.keys())[month_number - 1]
-    return HttpResponseRedirect(month_text)
+    try:
+        month_text = list(monthly_challenges.keys())[month_number - 1]
+        return HttpResponseRedirect(month_text)
+    except:
+        return HttpResponseNotFound("Invalid month")
 
 
 def challenge_by_month(request, month):
