@@ -1,0 +1,20 @@
+<header>
+    <nav>
+        <a href="{% url "index" %}">All Challenges</a>
+    </nav>
+</header>
+
+{% comment %}
+    month_name is a template variable passed by render() in the challenge_by_month view to the challenge.html template
+    this is indirectly passed to this snippet by way of the challenge.html template
+    this will not error out if a different template doesn't pass month_name to this snippet however,
+        as is the case with the index view and index.html
+    {{ month_name }}
+{% endcomment %}
+
+{% comment %}
+    active_page is a partial variable, created by the include tag and directly passed by it from inside the challenge.html template
+    this will also not error out e.g. the header.html in index.html is not passing a variable here
+        so nothing will be rendered by this partial
+    {{ active_page }}
+{% endcomment %}
