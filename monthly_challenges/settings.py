@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'challenges',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +55,11 @@ ROOT_URLCONF = 'monthly_challenges.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # BASE_DIR/"challenges"/"templates"
+            # instead of registering app templates here, we do it via INSTALLED_APPS
+            BASE_DIR/"templates"
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,3 +130,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 APPEND_SLASH = False
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
