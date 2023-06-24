@@ -27,7 +27,8 @@ def challenge_by_month_by_number(request, month_number):
         redirect_path = reverse("challenge_of_the_month", args=[month_text])
         return HttpResponseRedirect(redirect_path)
     except:
-        return HttpResponseNotFound("Invalid month")
+        # HttpResponseNotFound should return an HTML template, either an inline one like this, or by referencing a template file like is done in challenge_by_month below
+        return HttpResponseNotFound("<h1>Invalid month</h1>")
 
 
 def challenge_by_month(request, month):
@@ -48,6 +49,7 @@ def challenge_by_month(request, month):
         # response = render_to_string("404.html")
         # return HttpResponseNotFound(response)
         raise Http404()
+        # remember, Http404 does nothing because DEBUG=True and cannot be False in a local environment
 
 
 def index(request):
